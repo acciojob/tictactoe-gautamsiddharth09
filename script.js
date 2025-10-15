@@ -74,6 +74,12 @@ function checkWinner() {
     if (pos1Val && pos1Val === pos2Val && pos2Val === pos3Val) {
       const winner = pos1Val === "x" ? player1 : player2;
       messDiv.innerText = `${winner} congratulations you won!`;
+		messDiv.style.fontSize = "45px"; 
+       messDiv.style.color = "#04AA6D";
+		 boxes[a].style.backgroundColor = "#90EE90"; // light green
+      boxes[b].style.backgroundColor = "#90EE90";
+      boxes[c].style.backgroundColor = "#90EE90";
+
       boxes.forEach((box) => (box.disabled = true));
       return;
     }
