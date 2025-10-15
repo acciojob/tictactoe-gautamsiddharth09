@@ -23,8 +23,10 @@ document.getElementById("submit").addEventListener("click", function() {
   document.querySelectorAll(".cell").forEach(item => {
 			item.innerText = "";
 			item.disabled = false;
-			turnX = true;
+			
   });
+	  turnX = true;
+	   messDiv.innerText = `${player1}, you're up`;
   });
 
 
@@ -48,12 +50,12 @@ boxes.forEach(item => {
 	item.addEventListener("click", () => {
 		
 		if(turnX){
-			item.textContent = "X";
+			item.textContent = "x";
 			messDiv.innerText = `${player2}  you're up `
 			
 		
 		} else {
-			item.textContent = "O";
+			item.textContent = "o";
 			messDiv.innerText = `${player1}  you're up `
 			
 			}
@@ -86,7 +88,10 @@ let checkWinner = () => {
 		let pos3Val = boxes[pattern[2]].innerText;
 		if(pos1Val != "" && pos2Val != "" && pos3Val != "") {
 			if(pos1Val === pos2Val && pos2Val === pos3Val) {
-				document.querySelector(".message").innerText = `${pos1Val === 'X' ? player1 : player2}, congratulations you won!`
+				 const winner = pos1Val === "x" ? player1 : player2;
+				document.querySelector(".message").innerText = `${winner}, congratulations you won!`
+			    boxes.forEach((box) => (box.disabled = true));
+      return;
 			}
 		}
 	}
