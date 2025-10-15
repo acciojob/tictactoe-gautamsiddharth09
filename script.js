@@ -5,8 +5,8 @@ let turnX= true;
 
 
 document.getElementById("submit").addEventListener("click", function() {
-	player_1 = document.getElementById("player1").value;
-    player_2 = document.getElementById("player2").value;
+	player1 = document.getElementById("player1").value;
+    player2 = document.getElementById("player2").value;
 	
 	if(player1 && player2) {
 		document.querySelector(".input-section").style.display = 'none';
@@ -57,7 +57,7 @@ boxes.forEach(item => {
 			messDiv.innerText = `${player1}  you're up `
 			
 			}
-		item.disabled = true;
+		
 	    turnX = !turnX;
 		checkWinner();
 		
