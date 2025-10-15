@@ -1,17 +1,17 @@
 //your JS code here. If required.
-let player_1, player_2;
+let player1, player2;
 let messDiv = document.querySelector(".message");
 let turnX= true;
 
 
 document.getElementById("submit").addEventListener("click", function() {
-	player_1 = document.getElementById("player-1").value;
-    player_2 = document.getElementById("player-2").value;
+	player_1 = document.getElementById("player1").value;
+    player_2 = document.getElementById("player2").value;
 	
-	if(player_1 && player_2) {
+	if(player1 && player2) {
 		document.querySelector(".input-section").style.display = 'none';
 		document.querySelector(".board").style.display = 'block';
-	    messDiv.innerText = `${player_1}, you're up`
+	    messDiv.innerText = `${player1}, you're up`
 	}
 
 		});
@@ -36,7 +36,7 @@ document.getElementById("submit").addEventListener("click", function() {
 			
 		});
 		turnX = true;
-	    messDiv.innerText = `${player_1}, you're up`;
+	    messDiv.innerText = `${player1}, you're up`;
 		
 		});
 
@@ -49,15 +49,15 @@ boxes.forEach(item => {
 		
 		if(turnX){
 			item.textContent = "X";
-			messDiv.innerText = `${player_2}  you're up `
+			messDiv.innerText = `${player2}  you're up `
 			
 		
 		} else {
 			item.textContent = "O";
-			messDiv.innerText = `${player_1}  you're up `
+			messDiv.innerText = `${player1}  you're up `
 			
 			}
-		
+		item.disabled = true;
 	    turnX = !turnX;
 		checkWinner();
 		
@@ -86,7 +86,7 @@ let checkWinner = () => {
 		let pos3Val = boxes[pattern[2]].innerText;
 		if(pos1Val != "" && pos2Val != "" && pos3Val != "") {
 			if(pos1Val === pos2Val && pos2Val === pos3Val) {
-				document.querySelector(".message").innerText = `${pos1Val === 'X' ? player_1 : player_2}, congratulations you won!`
+				document.querySelector(".message").innerText = `${pos1Val === 'X' ? player1 : player2}, congratulations you won!`
 			}
 		}
 	}
