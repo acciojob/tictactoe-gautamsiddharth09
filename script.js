@@ -6,22 +6,25 @@ let turnX= true;
 document.getElementById("submit").addEventListener("click", function() {
 	player_1 = document.getElementById("player-1").value;
     player_2 = document.getElementById("player-2").value;
+	
 	if(player_1 && player_2) {
 		document.querySelector(".input-section").style.display = 'none';
 		document.querySelector(".board").style.display = 'block';
 	    messDiv.innerText = `${player_1}, you're up`
 	}
+
 		});
-	document.querySelector(".restart").addEventListener("click", function(){
-		document.querySelector(".input-section").style.display = 'block';
-		document.querySelector(".board").style.display = 'none';
-		player_1 = document.getElementById("player-1").value = "";
-		player_2 = document.getElementById("player-2").value = "";
-		messDiv.innerText = "";
+
+	document.querySelector(".reset").addEventListener("click", function(){
 		document.querySelectorAll(".cell").forEach(item => {
 			item.innerText = "";
-		})
-});
+		
+		});
+		
+		});
+
+
+
 
 let boxes = document.querySelectorAll(".cell");
 boxes.forEach(item => {
@@ -29,8 +32,8 @@ boxes.forEach(item => {
 		if(turnX){
 			item.textContent = "X";
 			messDiv.innerText = `${player_2}  you're up `
-			
-			item.disabled = true;
+			turnX = false;
+		
 		} else {
 			item.textContent = "O";
 			messDiv.innerText = `${player_1}  you're up `
@@ -38,6 +41,7 @@ boxes.forEach(item => {
 			}
 	    
 	});
+
 });
 
 
