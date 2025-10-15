@@ -3,6 +3,7 @@ let player_1, player_2;
 let messDiv = document.querySelector(".message");
 let turnX= true;
 
+
 document.getElementById("submit").addEventListener("click", function() {
 	player_1 = document.getElementById("player-1").value;
     player_2 = document.getElementById("player-2").value;
@@ -15,11 +16,27 @@ document.getElementById("submit").addEventListener("click", function() {
 
 		});
 
+  document.querySelector(".exit").addEventListener("click", function() {
+  document.querySelector(".input-section").style.display = 'block';
+  document.querySelector(".board").style.display = 'none';
+  messDiv.innerText = "";
+  document.querySelectorAll(".cell").forEach(item => {
+			item.innerText = "";
+			item.disabled = false;
+			turnX = true;
+  });
+  });
+
+
+
 	document.querySelector(".reset").addEventListener("click", function(){
 		document.querySelectorAll(".cell").forEach(item => {
 			item.innerText = "";
-		
+			item.disabled = false;
+			
 		});
+		turnX = true;
+	    messDiv.innerText = `${player_1}, you're up`;
 		
 		});
 
@@ -29,20 +46,52 @@ document.getElementById("submit").addEventListener("click", function() {
 let boxes = document.querySelectorAll(".cell");
 boxes.forEach(item => {
 	item.addEventListener("click", () => {
+		
 		if(turnX){
 			item.textContent = "X";
 			messDiv.innerText = `${player_2}  you're up `
-			turnX = false;
+			
 		
 		} else {
 			item.textContent = "O";
 			messDiv.innerText = `${player_1}  you're up `
-			turnX = true;
+			
 			}
-	    
+		
+	    turnX = !turnX;
+		checkWinner();
+		
+		
 	});
 
 });
+
+
+
+let winPattern = [
+	[0,1,2],
+	[3,4,5],
+	[6,7,8],
+	[0,3,6],
+	[1,4,7],
+	[2,5,8],
+	[0,4,8],
+	[2,4,6],
+];
+
+let checkWinner = () => {
+	for(let pattern of winPattern) {
+		let pos1Val = boxes[pattern[0]].innerText;
+		let pos2Val = boxes[pattern[1]].innerText;
+		let pos3Val = boxes[pattern[2]].innerText;
+		if(pos1Val != "" && pos2Val != "" && pos3Val != "") {
+			if(pos1Val === pos2Val && pos2Val === pos3Val) {
+				document.querySelector(".message").innerText = `${pos1Val === 'X' ? player_1 : player_2}, congratulations you won!`
+			}
+		}
+	}
+	
+}
 
 
 

@@ -18,8 +18,20 @@
 	cursor:pointer;
 	
 }
+
+#player-1{
+	width:50vmin;
+	padding:1.5vmin
+}
+
+#player-2{
+	width:50vmin;
+	padding:1.5vmin;
+}
+
 .cell{
 	border:1px solid black;
+	
 }
 
 .cell:hover{
@@ -39,8 +51,38 @@
 	font-weight:500px;
 	border-radius:5px;
 	cursor:pointer;
+	width:10vmin;
+	font-weight:600;
 }
 
+.exit{
+    padding:10px;
+	margin-block:10px;
+	background-color:black;
+	color:white;
+	border:none;
+	font-weight:500px;
+	border-radius:5px;
+	cursor:pointer;
+	padding:10px;
+	width:10vmin;
+	font-weight:600;
+	
+}
+#submit{
+	  padding:10px;
+	margin-block:10px;
+	background-color:black;
+	color:white;
+	border:none;
+	font-weight:500px;
+	border-radius:5px;
+	cursor:pointer;
+	padding:10px;
+	width:15vmin;
+	font-weight:600;
+	
+}
 
 
 
